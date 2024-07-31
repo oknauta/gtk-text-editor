@@ -28,46 +28,34 @@ static void Scroll()
 
 static void SaveFile()
 {
+    /* Starting variables */
+
+    // Buffer for text
     GtkTextBuffer *buffer;
+    // Setting up the bounds of starting and ending of the buffer
     GtkTextIter start, end;
+    // Text that will be saved by the buffer
     gchar *text;
+    // File that will be saved on computer
     FILE *file;
 
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(app_data.text_view));
-    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    /* Making the magick */
 
+    // Getting the buffer from the text view
+    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(app_data.text_view));
+    // Getting the bounds from the buffer to variables
+    gtk_text_buffer_get_bounds(buffer, &start, &end);
+    // Getting the text from the buffer to text
     text = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
     
+    // Opening file with the name Text.txt on the mode write
     file = fopen("Text.txt", "w");
+    // Writing the what is in text on file
     fputs(text, file);
     
+    /* Closing */
     fclose(file);
     g_free(text);
-
-
-    /*
-    GtkTextBuffer *buffer;
-    GtkTextIter start, end;
-    gchar *text;
-
-    buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(app_data.text_view));
-    gtk_text_buffer_get_bounds(buffer, &start, &end);
-
-    text = gtk_text_buffer_get_text(buffer, &start, &end, FALSE);
-
-
-    FILE *file;
-
-    gchar *file_name = "File.txt";
-
-    file = fopen(file_name, "w");
-
-    fputs(text, file);
-
-    fclose(file);
-
-    g_free(text);
-    */
 }
 
 static void HeaderMenu()
