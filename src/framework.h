@@ -8,19 +8,26 @@
 
 typedef struct
 {
+    /* APP */
+
     GtkApplication *gtk_app;
     int status;
+
+    /* WIDGETS */
+
     GtkWidget *window;
-    GtkWidget *text_view;
     GtkWidget *header_menu;
-    GtkWidget *item;
-    GtkWidget *scroll;
     GtkWidget *save_button;
+    GtkWidget *load_button;
+    GtkWidget *text_view;
+    GtkWidget *scroll;
 }application_data;
 
-static void Scroll();
-static void SaveFile();
-static void HeaderMenu();
-static void activate(GtkApplication *app, gpointer user_data);
+void run();
+void activate();
+void saveFile();
+void headerMenu();
+void textView();
 
-#endif // FRAMEWORK
+#endif //FRAMEWORK
+
