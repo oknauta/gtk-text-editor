@@ -57,10 +57,19 @@ void saveFile()
     // Opening file with the name Text.txt on the mode write
     file = fopen("Text.txt", "w");
     // Writing the what is in text on file
-    fputs(text, file);
+
+    if(file != NULL)
+    {
+        fputs(text, file);
+        /* Closing */
+        fclose(file);
+    }
+    else
+    {
+        gtk_alert_dialog_show(gtk_alert_dialog_new("Failed to save file."), GTK_WINDOW(app_data.window));
+    }
+
     
-    /* Closing */
-    fclose(file);
     g_free(text);
 }
 
