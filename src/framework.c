@@ -64,6 +64,12 @@ void saveFile()
     g_free(text);
 }
 
+void loadFile()
+{
+    GtkAlertDialog *upcoming = gtk_alert_dialog_new("Upcoming...");
+    gtk_alert_dialog_show(upcoming, GTK_WINDOW(app_data.window));
+}
+
 
 void headerMenu()
 {
@@ -73,6 +79,12 @@ void headerMenu()
     app_data.save_button = gtk_button_new_with_label("Save");
     g_signal_connect(app_data.save_button, "clicked", G_CALLBACK(saveFile), NULL);
     gtk_header_bar_pack_start(GTK_HEADER_BAR(app_data.header_menu), app_data.save_button);
+    
+    app_data.load_button = gtk_button_new_with_label("Load");
+    gtk_header_bar_pack_start(GTK_HEADER_BAR(app_data.header_menu), app_data.load_button);
+
+    g_signal_connect(app_data.save_button, "clicked", G_CALLBACK(saveFile), NULL);
+    g_signal_connect(app_data.load_button, "clicked", G_CALLBACK(loadFile), NULL);
 }
 
 

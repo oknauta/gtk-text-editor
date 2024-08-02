@@ -26,6 +26,7 @@ typedef struct
 void run();
 void activate();
 void saveFile();
+void loadFile();
 void headerMenu();
 void textView();
 
