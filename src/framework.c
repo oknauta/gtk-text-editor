@@ -26,6 +26,10 @@ void activate(GtkApplication *app)
     textView();
 
     gtk_window_present(GTK_WINDOW(app_data.window));
+    
+    GtkAlertDialog *box = gtk_alert_dialog_new("Application in development.");
+
+    gtk_alert_dialog_show(GTK_ALERT_DIALOG(box), GTK_WINDOW(app_data.window));
 }
 
 void saveFile()
