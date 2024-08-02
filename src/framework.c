@@ -36,7 +36,6 @@ void headerMenu()
     gtk_window_set_titlebar(GTK_WINDOW(app_data.window), app_data.header_menu);
     
     app_data.save_button = gtk_button_new_with_label("Save");
-    g_signal_connect(app_data.save_button, "clicked", G_CALLBACK(saveFile), NULL);
     gtk_header_bar_pack_start(GTK_HEADER_BAR(app_data.header_menu), app_data.save_button);
     
     app_data.load_button = gtk_button_new_with_label("Load");
