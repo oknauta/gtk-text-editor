@@ -46,6 +46,23 @@ void saveFile()
 
 void loadFile()
 {
-    GtkAlertDialog *upcoming = gtk_alert_dialog_new("Upcoming...");
-    gtk_alert_dialog_show(upcoming, GTK_WINDOW(app_data.window));
+    FILE *file = fopen("Text.txt", "r");
+    if (file == NULL) {
+        g_printerr("Erro ao abrir o arquivo para leitura\n");
+        return;
+    }
+
+    fseek(file, 0, SEEK_END);
+    long file_size = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    gchar *text = g_malloc(file_size + 1);
+    fread(text, 1, file_size, file);
+    text[file_size] = '\0';
+
+    GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(app_data.text_view));
+    gtk_text_buffer_set_text(buffer, text, -1);
+
+    g_free(text);
+    fclose(file);
 }
