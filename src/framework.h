@@ -30,5 +30,7 @@ void loadFile();
 void headerMenu();
 void textView();
 
+extern application_data app_data;
+
 #endif //FRAMEWORK
 
